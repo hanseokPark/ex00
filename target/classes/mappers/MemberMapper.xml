@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dgit.mapper.MemberMapper">
+	<!-- 시간 반환 -->
+	<select id="readTime" resultType="string">
+		select now()
+	</select>
+	<!--  parameterType 생략해도 인식 -->
+	<insert id="createMember">
+		insert into tbl_member(userid, userpw, username, email)
+		values (#{userid}, #{userpw}, #{username}, #{email})
+	</insert>
+	<select id="selectId" resultType="MemberVO">
+		select * from tbl_member where userid = #{userid}
+	</select>
+	<select id="readWithPW" resultType="MemberVO">
+		select * from tbl_member where userid = #{userid} and userpw = #{userpw}
+	</select>
+	
+</mapper>
